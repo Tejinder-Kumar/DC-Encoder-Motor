@@ -11,4 +11,3 @@ DC motor with encoder allow mico-controller to:
 2. it allow micro-ccontroller to know the speed of Motor based on pulses microcontroller reading, and acurate speed controlling can be done. For example, With change of Load motor RPM chnages, but if encoder is used it speed can be monitored and ajdusted at constant for variation of load.
 3. it allow micro-controller to know how many turn/positon motor has made after start, which can be used to bring motor back to Home position (useful in Self balancing robot and many more)
 4. Two DC motor never had same RPM, so encoder allow micro-controller to run two motor at same speed. it is useful if you are building robot and want to move in straight line 
-5. 
