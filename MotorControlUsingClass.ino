@@ -18,6 +18,8 @@ class motor
   private:
     int pinA = LOW;
     int pinB = LOW;
+    int pwm_pin;
+    int s = 255;      //default speed is Max
 
   public:
     void setdata (int x, int y)
@@ -46,6 +48,13 @@ class motor
       pinMode(pinA, OUTPUT);
       pinMode(pinB, OUTPUT);
     }
+     motor(int x, int y, int z)
+    { 
+      pinA = x; pinB = y; pwm_pin =z;
+      pinMode(pinA, OUTPUT);
+      pinMode(pinB, OUTPUT);
+      pinMode(pwm_pin, OUTPUT);
+    }
 
     void forward()
     {
@@ -59,13 +68,18 @@ class motor
     {
       digitalWrite(pinA, LOW);digitalWrite(pinB, LOW);
     }
+    void speeds(int x)
+    {
+      s =x;
+      analogWrite(pwm_pin,x);
+    }
   
 };
 
 
 
 
-motor motor1(5,6);
+motor motor1(5,6,9);                    // Create Motor Object
 
 long count=0;
 void setup() 
@@ -81,15 +95,9 @@ void setup()
 
 void loop() 
 {
-//  motor1.forward();
-//  delay(2000);
-//  Serial.println(count);
-  motor1.reverse();
-  delay(2000);
-  Serial.println(count);
- motor1.stops();
- delay(2000);
- 
+  motor1.speeds(120);
+  motor1.forward();
+  
  
   
 }
@@ -98,3 +106,7 @@ void Int1()
 {
     (digitalRead(8)==0)? (count++) : (count--) ;
 }
+
+
+
+
